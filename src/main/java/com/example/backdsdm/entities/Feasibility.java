@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Feasibility")
 public class Feasibility {
     @Id
-    @Setter(AccessLevel.NONE)
+    //@Setter(AccessLevel.NONE)
     private String id;
 
     private String technicalFeasibility;

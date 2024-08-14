@@ -27,4 +27,27 @@ public class KPIServiceImpl implements IKPIService {
         kpi.setValue(value);
         return kpiRepository.save(kpi);
     }
+    @Override
+    public KPI updateKPI(String projectId, String id, String name, String value) {
+        KPI kpi = kpiRepository.findByProjectIdAndId(projectId, id)
+                .orElseThrow();
+        kpi.setName(name);
+        kpi.setValue(value);
+        return kpiRepository.save(kpi);
+    }
+
+    @Override
+    public KPI archiveKPI(String projectId, String id) {
+        KPI kpi = kpiRepository.findByProjectIdAndId(projectId, id)
+                .orElseThrow();
+        kpi.setArchived(true);
+        return kpiRepository.save(kpi);
+    }
+
+    @Override
+    public void deleteKPI(String projectId, String id) {
+        KPI kpi = kpiRepository.findByProjectIdAndId(projectId, id)
+                .orElseThrow();
+        kpiRepository.deleteById(id);
+    }
 }

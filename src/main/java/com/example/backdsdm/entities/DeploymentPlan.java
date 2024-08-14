@@ -21,6 +21,7 @@ public class DeploymentPlan {
     private String dataMigration;
     private String preProdTests;
     private String projectId;
+    private boolean archived = false;
 
     private Set<Release> releases;
 }

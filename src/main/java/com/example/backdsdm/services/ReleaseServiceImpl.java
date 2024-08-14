@@ -28,4 +28,35 @@ public class ReleaseServiceImpl implements IReleaseService {
         release.setDetails(details);
         return releaseRepository.save(release);
     }
+
+    @Override
+    public Release updateRelease(String deploymentPlanId, String id, String name, String details) {
+        // Recherche de la release par deploymentPlanId et releaseId
+        Release release = releaseRepository.findByDeploymentPlanIdAndId(deploymentPlanId, id)
+                .orElseThrow();
+
+        // Mise à jour des champs de la release
+        release.setName(name);
+        release.setDetails(details);
+
+        // Sauvegarde et retour de la release mise à jour
+        return releaseRepository.save(release);
+    }
+    @Override
+    public Release archiveRelease(String deploymentPlanId, String id) {
+        Release release = releaseRepository.findByDeploymentPlanIdAndId(deploymentPlanId, id)
+                .orElseThrow();
+
+        release.setArchived(true);
+        return releaseRepository.save(release);
+    }
+    @Override
+    public void deleteRelease(String deploymentPlanId, String id) {
+        Release release = releaseRepository.findByDeploymentPlanIdAndId(deploymentPlanId, id)
+                .orElseThrow();
+
+        releaseRepository.deleteById(id);
+    }
+
+
 }

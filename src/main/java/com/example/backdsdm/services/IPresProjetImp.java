@@ -20,10 +20,7 @@ public class IPresProjetImp implements IPresProjetService {
     public PresProjet addDsdm(PresProjet dsdm) {
         return dsdmRepository.save(dsdm);    }
 
-    @Override
-    public PresProjet retrieveDSdm(ObjectId id) {
-        return dsdmRepository.findById(id).orElseThrow(()->new IllegalArgumentException("No dsdm found with this id"));
-    }
+
 @Override
 public PresProjet updateDsdm(String idproject, String id, String context, String priorisation, String status, String startDate, String endDate, String id_user) {
     Optional<PresProjet> optionalDsdm = dsdmRepository.findByIdAndIdproject(id, idproject);
@@ -46,5 +43,9 @@ public PresProjet updateDsdm(String idproject, String id, String context, String
     @Override
     public PresProjet getDsdmByProjectId(String idProject) {
         return dsdmRepository.findByIdproject(idProject);
+    }
+    @Override
+    public PresProjet retrieveDSdm(ObjectId id) {
+        return dsdmRepository.findById(id).orElseThrow(()->new IllegalArgumentException("No dsdm found with this id"));
     }
 }

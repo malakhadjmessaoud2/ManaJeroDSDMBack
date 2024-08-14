@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Advantage")
 public class Advantage {
     @Id
-    @Setter(AccessLevel.NONE)
+    //@Setter(AccessLevel.NONE)
     String id;
     String titre;
     String desc;

@@ -18,4 +18,6 @@ public class Release {
     private String name;
     private String details;
     private String deploymentPlanId;
+    private boolean archived = false;
+
 }

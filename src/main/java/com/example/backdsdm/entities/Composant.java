@@ -16,7 +16,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Composant")
 public class Composant {
     @Id
-    @Setter(AccessLevel.NONE)
+    //@Setter(AccessLevel.NONE)
     String id;
     String nomComposant;
     String titre;

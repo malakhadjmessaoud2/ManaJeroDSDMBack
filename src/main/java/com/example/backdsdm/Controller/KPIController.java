@@ -31,4 +31,20 @@ public class KPIController {
     ) {
         return kpiService.addKPI(projectId, name, value);
     }
+    @PutMapping("/updateKPI/{projectId}/{id}")
+    public KPI updateKPI(@PathVariable String projectId, @PathVariable String id,
+                         @RequestParam String name,
+                         @RequestParam String value) {
+        return kpiService.updateKPI(projectId, id, name, value);
+    }
+
+    @PutMapping("/archiveKPI/{projectId}/{id}")
+    public KPI archiveKPI(@PathVariable String projectId, @PathVariable String id) {
+        return kpiService.archiveKPI(projectId, id);
+    }
+
+    @DeleteMapping("/deleteKPI/{projectId}/{id}")
+    public void deleteKPI(@PathVariable String projectId, @PathVariable String id) {
+        kpiService.deleteKPI(projectId, id);
+    }
 }

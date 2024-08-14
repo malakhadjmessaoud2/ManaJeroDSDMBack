@@ -18,4 +18,6 @@ public class Report {
     private String title;
     private String content;
     private String projectId;
+    private boolean archived = false;
+
 }

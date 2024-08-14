@@ -30,4 +30,25 @@ public class ImprovementPlanController {
     ) {
         return improvementPlanService.addImprovementPlan(projectId, content);
     }
+    @PutMapping("/updateImprovementPlan/{projectId}/{id}")
+    public ImprovementPlan updateImprovementPlan(
+            @PathVariable String projectId,
+            @PathVariable String id,
+            @RequestParam String content) {
+        return improvementPlanService.updateImprovementPlan(projectId, id, content);
+    }
+
+    @PutMapping("/archiveImprovementPlan/{projectId}/{id}")
+    public ImprovementPlan archiveImprovementPlan(
+            @PathVariable String projectId,
+            @PathVariable String id) {
+        return improvementPlanService.archiveImprovementPlan(projectId, id);
+    }
+
+    @DeleteMapping("/deleteImprovementPlan/{projectId}/{id}")
+    public void deleteImprovementPlan(
+            @PathVariable String projectId,
+            @PathVariable String id) {
+        improvementPlanService.deleteImprovementPlan(projectId, id);
+    }
 }
