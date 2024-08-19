@@ -31,4 +31,21 @@ public class ReleaseController {
     ) {
         return releaseService.addRelease(deploymentPlanId, name, details);
     }
+    @PutMapping("/updateRelease/{deploymentPlanId}/{id}")
+    public Release updateRelease(@PathVariable String deploymentPlanId,
+                                 @PathVariable String id,
+                                 @RequestParam String name,
+                                 @RequestParam String details) {
+        return releaseService.updateRelease(deploymentPlanId, id, name, details);
+    }
+
+    @PutMapping("/archiveRelease/{deploymentPlanId}/{id}")
+    public Release archiveRelease(@PathVariable String deploymentPlanId, @PathVariable String id) {
+        return releaseService.archiveRelease(deploymentPlanId, id);
+    }
+
+    @DeleteMapping("/deleteRelease/{deploymentPlanId}/{id}")
+    public void deleteRelease(@PathVariable String deploymentPlanId, @PathVariable String id) {
+        releaseService.deleteRelease(deploymentPlanId, id);
+    }
 }

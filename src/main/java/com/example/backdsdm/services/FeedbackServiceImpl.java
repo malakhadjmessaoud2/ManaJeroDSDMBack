@@ -27,4 +27,26 @@ public class FeedbackServiceImpl implements IFeedbackService {
         feedback.setContent(content);
         return feedbackRepository.save(feedback);
     }
+    @Override
+    public Feedback updateFeedback(String projectId, String id, String content) {
+        Feedback feedback = feedbackRepository.findByProjectIdAndId(projectId, id)
+                .orElseThrow();
+        feedback.setContent(content);
+        return feedbackRepository.save(feedback);
+    }
+
+    @Override
+    public Feedback archiveFeedback(String projectId, String id) {
+        Feedback feedback = feedbackRepository.findByProjectIdAndId(projectId, id)
+                .orElseThrow();
+        feedback.setArchived(true);
+        return feedbackRepository.save(feedback);
+    }
+
+    @Override
+    public void deleteFeedback(String projectId, String id) {
+        Feedback feedback = feedbackRepository.findByProjectIdAndId(projectId, id)
+                .orElseThrow();
+        feedbackRepository.deleteById(id);
+    }
 }

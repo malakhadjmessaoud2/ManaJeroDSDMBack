@@ -32,5 +32,20 @@ public class DeploymentPlanController {
     ) {
         return deploymentPlanService.addDeploymentPlan(projectId, environment, dataMigration, preProdTests);
     }
+    @PutMapping("/updateDeploymentPlan/{projectId}/{id}")
+    public DeploymentPlan updateDeploymentPlan(@PathVariable String projectId, @PathVariable String id,
+                                               @RequestParam String environment,
+                                               @RequestParam String dataMigration,
+                                               @RequestParam String preProdTests) {
+        return deploymentPlanService.updateDeploymentPlan(projectId, id, environment, dataMigration, preProdTests);
+    }
+    @PutMapping("/archiveDeploymentPlan/{projectId}/{id}")
+    public DeploymentPlan archiveDeploymentPlan(@PathVariable String projectId, @PathVariable String id) {
+        return deploymentPlanService.archiveDeploymentPlan(projectId, id);
+    }
+    @DeleteMapping("/deleteDeploymentPlan/{projectId}/{id}")
+    public void deleteDeploymentPlan(@PathVariable String projectId, @PathVariable String id) {
+        deploymentPlanService.deleteDeploymentPlan(projectId, id);
+    }
 
 }

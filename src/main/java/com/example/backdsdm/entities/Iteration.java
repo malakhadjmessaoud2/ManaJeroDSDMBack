@@ -18,5 +18,6 @@ public class Iteration {
     private String feature;
     private String deliverables;
     private String sprintId;
+    private boolean archived = false;
 
 }

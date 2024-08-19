@@ -28,4 +28,24 @@ public class ReportServiceImpl implements IReportService {
         report.setContent(content);
         return reportRepository.save(report);
     }
+    @Override
+    public Report updateReport(String projectId, String id, String title, String content) {
+        Report report = reportRepository.findByProjectIdAndId(projectId, id).orElseThrow();
+        report.setTitle(title);
+        report.setContent(content);
+        return reportRepository.save(report);
+    }
+
+    @Override
+    public Report archiveReport(String projectId, String id) {
+        Report report = reportRepository.findByProjectIdAndId(projectId, id).orElseThrow();
+        report.setArchived(true);
+        return reportRepository.save(report);
+    }
+
+    @Override
+    public void deleteReport(String projectId, String id) {
+        Report report = reportRepository.findByProjectIdAndId(projectId, id).orElseThrow();
+        reportRepository.deleteById(id);
+    }
 }

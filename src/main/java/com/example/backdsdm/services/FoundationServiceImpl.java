@@ -19,8 +19,8 @@ public class FoundationServiceImpl implements IFoundationService{
     }
 
     @Override
-    public Foundation getFoundationByProject(String projectId) {
-        return foundationRepository.findByProject(projectId);
+    public Foundation getFoundationByProject(String project) {
+        return foundationRepository.findByProject(project);
     }
     @Override
     public Foundation updateFoundation(String project, String id, String projectVision, String userNeeds, String projectCharter, String requirements, String idUser) {

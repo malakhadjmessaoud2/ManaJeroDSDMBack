@@ -18,4 +18,6 @@ public class KPI {
     private String name;
     private String value;
     private String projectId;
+    private boolean archived = false;
+
 }

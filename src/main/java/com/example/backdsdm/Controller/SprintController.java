@@ -28,4 +28,17 @@ public class SprintController {
 
         return sprintService.addSprint(projectId, name);
     }
+    @PutMapping("/updateSprint/{projectId}/{id}")
+    public Sprint updateSprint(@PathVariable String projectId, @PathVariable String id, @RequestParam String name) {
+        return sprintService.updateSprint(projectId, id, name);
+    }
+    @PutMapping("/archiveSprint/{projectId}/{id}")
+    public Sprint archiveSprint(@PathVariable String projectId, @PathVariable String id) {
+        return sprintService.archiveSprint(projectId, id);
+    }
+
+    @DeleteMapping("/deleteSprint/{projectId}/{id}")
+    public void deleteIteration(@PathVariable String projectId, @PathVariable String id) {
+        sprintService.deleteIteration(projectId, id);
+    }
 }

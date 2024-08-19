@@ -31,4 +31,20 @@ public class ReportController {
     ) {
         return reportService.addReport(projectId, title, content);
     }
+    @PutMapping("/updateReport/{projectId}/{id}")
+    public Report updateReport(@PathVariable String projectId, @PathVariable String id,
+                               @RequestParam String title,
+                               @RequestParam String content) {
+        return reportService.updateReport(projectId, id, title, content);
+    }
+
+    @PutMapping("/archiveReport/{projectId}/{id}")
+    public Report archiveReport(@PathVariable String projectId, @PathVariable String id) {
+        return reportService.archiveReport(projectId, id);
+    }
+
+    @DeleteMapping("/deleteReport/{projectId}/{id}")
+    public void deleteReport(@PathVariable String projectId, @PathVariable String id) {
+        reportService.deleteReport(projectId, id);
+    }
 }

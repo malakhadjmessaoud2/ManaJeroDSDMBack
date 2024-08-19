@@ -30,4 +30,19 @@ public class FeedbackController {
     ) {
         return feedbackService.addFeedback(projectId, content);
     }
+    @PutMapping("/updateFeedback/{projectId}/{id}")
+    public Feedback updateFeedback(@PathVariable String projectId, @PathVariable String id,
+                                   @RequestParam String content) {
+        return feedbackService.updateFeedback(projectId, id, content);
+    }
+
+    @PutMapping("/archiveFeedback/{projectId}/{id}")
+    public Feedback archiveFeedback(@PathVariable String projectId, @PathVariable String id) {
+        return feedbackService.archiveFeedback(projectId, id);
+    }
+
+    @DeleteMapping("/deleteFeedback/{projectId}/{id}")
+    public void deleteFeedback(@PathVariable String projectId, @PathVariable String id) {
+        feedbackService.deleteFeedback(projectId, id);
+    }
 }

@@ -27,4 +27,23 @@ public class ImprovementPlanServiceImpl implements IImprovementPlanService {
         improvementPlan.setContent(content);
         return improvementPlanRepository.save(improvementPlan);
     }
+    public ImprovementPlan updateImprovementPlan(String projectId, String id, String content) {
+        ImprovementPlan improvementPlan = improvementPlanRepository.findByProjectIdAndId(projectId, id)
+                .orElseThrow();
+        improvementPlan.setContent(content);
+        return improvementPlanRepository.save(improvementPlan);
+    }
+
+    public ImprovementPlan archiveImprovementPlan(String projectId, String id) {
+        ImprovementPlan improvementPlan = improvementPlanRepository.findByProjectIdAndId(projectId, id)
+                .orElseThrow();
+        improvementPlan.setArchived(true);
+        return improvementPlanRepository.save(improvementPlan);
+    }
+
+    public void deleteImprovementPlan(String projectId, String id) {
+        ImprovementPlan improvementPlan = improvementPlanRepository.findByProjectIdAndId(projectId, id)
+                .orElseThrow();
+        improvementPlanRepository.deleteById(id);
+    }
 }

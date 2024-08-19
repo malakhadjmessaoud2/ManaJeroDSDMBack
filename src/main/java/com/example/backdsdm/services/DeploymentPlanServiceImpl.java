@@ -30,4 +30,27 @@ private final DeploymentPlanRepository deploymentPlanRepository;
         deploymentPlan.setReleases(new HashSet<>());
         return deploymentPlanRepository.save(deploymentPlan);
     }
+
+    @Override
+    public DeploymentPlan updateDeploymentPlan(String projectId, String id, String environment, String dataMigration, String preProdTests) {
+        DeploymentPlan deploymentPlan = deploymentPlanRepository.findByProjectIdAndId(projectId, id).orElseThrow();
+        deploymentPlan.setEnvironment(environment);
+        deploymentPlan.setDataMigration(dataMigration);
+        deploymentPlan.setPreProdTests(preProdTests);
+        return deploymentPlanRepository.save(deploymentPlan);
+    }
+
+    @Override
+    public DeploymentPlan archiveDeploymentPlan(String projectId, String id) {
+        DeploymentPlan deploymentPlan = deploymentPlanRepository.findByProjectIdAndId(projectId, id).orElseThrow();
+        deploymentPlan.setArchived(true);
+        return deploymentPlanRepository.save(deploymentPlan);
+    }
+
+    @Override
+    public void deleteDeploymentPlan(String projectId, String id) {
+        DeploymentPlan deploymentPlan = deploymentPlanRepository.findByProjectIdAndId(projectId, id)
+                .orElseThrow();
+        deploymentPlanRepository.deleteById(id);
+    }
 }

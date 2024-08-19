@@ -15,7 +15,6 @@ import java.time.LocalDate;
 @Document(collection = "Dsdm")
 public class PresProjet {
     @Id
-    @Setter(AccessLevel.NONE)
     String id;
     String context;
     String priorisation;
@@ -24,5 +23,6 @@ public class PresProjet {
     LocalDate endDate;
     String id_user;
     String idproject;
+
 
 }

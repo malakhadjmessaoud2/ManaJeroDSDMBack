@@ -19,6 +19,7 @@ public class Sprint {
     private String id;
     private String name;
     private String projectId;
+    private boolean archived = false;
 
     private Set<Iteration> iterations;
 }

@@ -17,4 +17,6 @@ public class ImprovementPlan {
     private String id;
     private String content;
     private String projectId;
+    private boolean archived = false;
+
 }

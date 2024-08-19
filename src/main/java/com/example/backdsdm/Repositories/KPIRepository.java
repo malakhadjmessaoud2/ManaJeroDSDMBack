@@ -4,7 +4,10 @@ import com.example.backdsdm.entities.KPI;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface KPIRepository extends MongoRepository<KPI, String> {
     List<KPI> findByProjectId(String projectId);
+    Optional<KPI> findByProjectIdAndId(String projectId, String id);
+
 }

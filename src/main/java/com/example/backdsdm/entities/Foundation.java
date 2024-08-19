@@ -13,7 +13,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Foundation")
 public class Foundation {
     @Id
-    @Setter(AccessLevel.NONE)
     private String id;
     private String projectVision;
     private String userNeeds;
