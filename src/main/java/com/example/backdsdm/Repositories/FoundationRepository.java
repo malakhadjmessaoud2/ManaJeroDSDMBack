@@ -6,8 +6,8 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;
 
-public interface FoundationRepository extends MongoRepository<Foundation, ObjectId> {
-    Foundation findByProject(String projectId);
+public interface FoundationRepository extends MongoRepository<Foundation, String> {
+    Foundation findByProject(String project);
     Optional<Foundation> findByIdAndProject(String id, String project);
 
 }

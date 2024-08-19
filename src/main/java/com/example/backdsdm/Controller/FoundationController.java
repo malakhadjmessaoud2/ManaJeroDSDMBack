@@ -1,5 +1,6 @@
 package com.example.backdsdm.Controller;
 
+import com.example.backdsdm.entities.Feasibility;
 import com.example.backdsdm.entities.Foundation;
 import com.example.backdsdm.services.IFoundationService;
 import lombok.AllArgsConstructor;
@@ -36,15 +37,13 @@ public class FoundationController {
         return ResponseEntity.ok(createdFoundation);
     }
 
-    @GetMapping("showfoundation/{projectId}")
-    public ResponseEntity<Foundation> getFoundationByProject(@PathVariable String projectId) {
-        Foundation foundation = foundationService.getFoundationByProject(projectId);
-        if (foundation != null) {
-            return ResponseEntity.ok(foundation);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    @GetMapping("showfoundation/{project}")
+    public Foundation getFoundationByProject(@PathVariable String project) {
+         return foundationService.getFoundationByProject(project);
+
+
     }
+
     @PutMapping("/updatefoundation/{project}/{id}")
     public ResponseEntity<Foundation> updateFoundation(
             @PathVariable String project,
